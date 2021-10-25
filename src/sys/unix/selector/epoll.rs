@@ -31,9 +31,12 @@ impl Selector {
         #[cfg(not(target_os = "android"))]
         let flag = libc::EPOLL_CLOEXEC;
 
+        // 调用epoll create
         syscall!(epoll_create1(flag)).map(|ep| Selector {
             #[cfg(debug_assertions)]
+            // 初始化
             id: NEXT_ID.fetch_add(1, Ordering::Relaxed),
+            // epoll fd
             ep,
             #[cfg(debug_assertions)]
             has_waker: AtomicBool::new(false),
@@ -60,6 +63,7 @@ impl Selector {
         #[cfg(not(target_pointer_width = "32"))]
         const MAX_SAFE_TIMEOUT: u128 = libc::c_int::max_value() as u128;
 
+        // 如果有timeout
         let timeout = timeout
             .map(|to| cmp::min(to.as_millis(), MAX_SAFE_TIMEOUT) as libc::c_int)
             .unwrap_or(-1);
@@ -144,6 +148,7 @@ fn interests_to_epoll(interests: Interest) -> u32 {
 }
 
 pub type Event = libc::epoll_event;
+// 多个events
 pub type Events = Vec<Event>;
 
 pub mod event {

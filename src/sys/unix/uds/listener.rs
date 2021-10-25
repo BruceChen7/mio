@@ -77,6 +77,7 @@ pub(crate) fn accept(listener: &net::UnixListener) -> io::Result<(UnixStream, So
         // Ensure the socket is closed if either of the `fcntl` calls
         // error below.
         let s = unsafe { net::UnixStream::from_raw_fd(socket) };
+        // 调用libc的系统调用
         syscall!(fcntl(socket, libc::F_SETFD, libc::FD_CLOEXEC))?;
 
         // See https://github.com/tokio-rs/mio/issues/1450

@@ -311,6 +311,7 @@ impl Poll {
     ///
     /// [struct]: #
     pub fn poll(&mut self, events: &mut Events, timeout: Option<Duration>) -> io::Result<()> {
+        // poll 事件
         self.registry.selector.select(events.sys(), timeout)
     }
 }

@@ -21,16 +21,20 @@ pub fn init() {
     static INIT: Once = Once::new();
 
     INIT.call_once(|| {
+        // 初始化logger
         env_logger::try_init().expect("unable to initialise logger");
 
         // Remove all temporary files from previous test runs.
         let dir = temp_dir();
+        // 返回所有的目录
         let _ = fs::remove_dir_all(&dir);
+        // 创建临时目录
         fs::create_dir_all(&dir).expect("unable to create temporary directory");
     })
 }
 
 pub fn init_with_poll() -> (Poll, Events) {
+    // 初始化临时目录和logger
     init();
 
     let poll = Poll::new().expect("unable to create Poll instance");

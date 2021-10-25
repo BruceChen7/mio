@@ -14,6 +14,7 @@ const SERVER: Token = Token(0);
 const DATA: &[u8] = b"Hello world!\n";
 
 fn main() -> io::Result<()> {
+    // 初始化logger
     env_logger::init();
 
     // Create a poll instance.

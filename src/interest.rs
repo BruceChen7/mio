@@ -13,6 +13,7 @@ use std::{fmt, ops};
 /// [`Poll`]: struct.Poll.html
 /// [readable]: struct.Interest.html#associatedconstant.READABLE
 /// [`poll`]: struct.Poll.html#method.poll
+// 事件L类型
 #[derive(Copy, PartialEq, Eq, Clone, PartialOrd, Ord)]
 pub struct Interest(NonZeroU8);
 
