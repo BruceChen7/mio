@@ -30,6 +30,7 @@ use std::{fmt, io};
 ///
 /// A basic example -- establishing a `TcpStream` connection.
 ///
+// 制定条件编译
 #[cfg_attr(all(feature = "os-poll", feature = "net"), doc = "```")]
 #[cfg_attr(not(all(feature = "os-poll", feature = "net")), doc = "```ignore")]
 /// # use std::error::Error;
@@ -316,6 +317,7 @@ impl Poll {
     }
 }
 
+// 条件编译
 cfg_os_poll! {
     impl Poll {
         /// Return a new `Poll` handle.

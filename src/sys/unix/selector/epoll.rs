@@ -147,6 +147,7 @@ fn interests_to_epoll(interests: Interest) -> u32 {
     kind as u32
 }
 
+// 类型别名
 pub type Event = libc::epoll_event;
 // 多个events
 pub type Events = Vec<Event>;

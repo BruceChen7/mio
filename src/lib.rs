@@ -63,8 +63,11 @@ cfg_net! {
 #[doc(no_inline)]
 pub use event::Events;
 pub use interest::Interest;
+// 重新导出相关的名字
 pub use poll::{Poll, Registry};
+// 重新导出TOKEN
 pub use token::Token;
+// 重新导出Waker
 pub use waker::Waker;
 
 #[cfg(all(unix, feature = "os-ext"))]
@@ -91,6 +94,7 @@ pub mod windows {
     pub use crate::sys::named_pipe::NamedPipe;
 }
 
+// 用来产生feature doc，一个mod，会产生一个doc 页面
 pub mod features {
     //! # Mio's optional features.
     //!
@@ -117,7 +121,9 @@ pub mod features {
     //! The `net` feature enables networking primitives in the `net` module.
 }
 
+// 用来产生guid  doc
 pub mod guide {
+    // 这种方式是模块级别的文档
     //! # Getting started guide.
     //!
     //! In this guide we'll do the following:

@@ -24,7 +24,7 @@ use crate::{event, sys, Interest, Registry, Token};
 /// use mio::net::TcpListener;
 /// use std::time::Duration;
 ///
-/// let mut listener = TcpListener::bind("127.0.0.1:34255".parse()?)?;
+/// let mut listener = TcpListener::bind("126.0.0.1:34255".parse()?)?;
 ///
 /// let mut poll = Poll::new()?;
 /// let mut events = Events::with_capacity(128);
